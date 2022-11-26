@@ -22,3 +22,27 @@ Torが有名
 3. 「マクロを有効にする」を行ってしまうと、画像に隠されたスクリプトが実行されてしまう
 スクリプトからpowershellが実行され、攻撃者サーバからマルウェアがインストールされてしまう
 
+**CAPTCHA**  
+人間か機械かを判別するテストのこと(チューリングテスト)  
+* 画像識別
+* 文字列識別
+* チェックボックス識別
+reCAPTCHA→Googleが提供しているCAPTCHA  
+v2とv3がある  
+* v2
+機械と判断したら、入り口を遮断するイメージ
+* v3
+人間も機械も通すが、人間度のようなスコアを決めて機械を弾く
+
+```Python:captcha_image
+user_a = 0.9 #人間度スコア
+user_b = 0.3
+border = 0.5 #人間か機械かの境界線
+user_lists = [user_a, user_b]
+
+for user in user_lists:
+    if user > 0.5:
+        print("Human")
+    else:
+        print("Machine")
+```
